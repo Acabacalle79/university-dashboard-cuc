@@ -4,6 +4,10 @@ Proyecto Final - Data Mining
 Iris Species Classification
 """
 
+import os
+os.environ['MPLCONFIGDIR'] = '/tmp/matplotlib'
+
+
 # Importación de librerías
 import pandas as pd
 import numpy as np
