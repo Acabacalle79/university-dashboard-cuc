@@ -1,8 +1,7 @@
-import os
-import pickle
+import streamlit as st
 import pandas as pd
-from sklearn.datasets import load_iris
-from sklearn.ensemble import RandomForestClassifier
+import numpy as np
+
 
 MODEL_PATH = "modelo_iris.pkl"
 
