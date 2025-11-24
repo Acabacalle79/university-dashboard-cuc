@@ -43,7 +43,7 @@ pred_name = iris.target_names[prediction]
 st.sidebar.subheader("Especie Predicha:")
 st.sidebar.success(pred_name.upper())
 
-st.subheader("📊 Métricas del Modelo")
+st.subheader("Métricas del Modelo")
 
 col1, col2, col3, col4 = st.columns(4)
 with col1:
