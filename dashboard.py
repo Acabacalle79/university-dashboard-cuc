@@ -1,31 +1,25 @@
-# -*- coding: utf-8 -*-
-"""
-Dashboard interactivo - Proyecto Final Data Mining
-Iris Classification - Streamlit
-"""
-
-import streamlit as st
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-from sklearn.datasets import load_iris
+import os
 import pickle
-from mpl_toolkits.mplot3d import Axes3D
+import pandas as pd
+from sklearn.datasets import load_iris
+from sklearn.ensemble import RandomForestClassifier
 
-st.set_page_config(
-    page_title="Iris Classification Dashboard",
-    layout="wide"
-)
+MODEL_PATH = "modelo_iris.pkl"
 
-st.title(" Iris Species Classification Dashboard")
-st.write("Dashboard interactivo del proyecto final de Data Mining.")
+# Si el modelo NO existe, lo crea automáticamente
+if not os.path.exists(MODEL_PATH):
+    iris = load_iris()
+    X = pd.DataFrame(iris.data, columns=iris.feature_names)
+    y = iris.target
 
-iris = load_iris()
-X = pd.DataFrame(iris.data, columns=iris.feature_names)
-y = iris.target
+    model = RandomForestClassifier(n_estimators=150, random_state=42)
+    model.fit(X, y)
 
-# Cargar modelo entrenado
-with open("modelo_iris.pkl", "rb") as f:
+    with open(MODEL_PATH, "wb") as f:
+        pickle.dump(model, f)
+
+# Cargar el modelo
+with open(MODEL_PATH, "rb") as f:
     model = pickle.load(f)
 
 st.sidebar.header("Predicción de especie")
