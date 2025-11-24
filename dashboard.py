@@ -11,6 +11,14 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_sc
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
+# Cargar dataset para obtener nombres de especies
+from sklearn.datasets import load_iris
+iris = load_iris()
+
+# Obtener el nombre de la especie predicha
+pred_name = iris.target_names[prediction][0]
+
+
 MODEL_PATH = "modelo_iris.pkl"
 
 # Si el modelo NO existe, lo crea automáticamente
